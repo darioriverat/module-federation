@@ -1,0 +1,63 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.card {
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+.card input {
+  padding: 5px;
+  width: 60px;
+}
+
+.operator {
+  color: slateblue;
+  display: inline-block;
+  padding: 5px;
+  font-size: 20px;
+}
+
+#result {
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  border-bottom: 1px solid chocolate;
+  background: plum;
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  width: 85px;
+  overflow: scroll;
+}
