@@ -38,7 +38,7 @@ function setupSum() {
 export function mountComponent({ elementId }) {
   document.querySelector(elementId).innerHTML = htmlTemplate;
 
-  window.onload = () => {
+  setTimeout(() => {
     setupSum()
-  }
+  }, 1000)
 }
