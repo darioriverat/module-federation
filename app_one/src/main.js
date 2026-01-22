@@ -2,7 +2,7 @@ import './style.css'
 import javascriptLogo from '/javascript.svg'
 import sum from './sum'
 
-document.querySelector('#app').innerHTML = `
+const htmlTemplate = `
   <div>
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
@@ -15,7 +15,7 @@ document.querySelector('#app').innerHTML = `
       <label for="y"></label>
       <input type="number" id="y" value="3" />
       <span class="operator">=</span>
-      <input id="result" readonly />
+      <input id="result_sum" readonly />
     </div>
   </div>
 `
@@ -23,7 +23,7 @@ document.querySelector('#app').innerHTML = `
 function setupSum() {
   const x = document.querySelector('#x')
   const y = document.querySelector('#y')
-  const result = document.querySelector('#result')
+  const result = document.querySelector('#result_sum')
 
   const listener = () => {
     result.value = sum(Number(x.value), Number(y.value))
@@ -35,6 +35,10 @@ function setupSum() {
   y.addEventListener('keyup', listener)
 }
 
-window.onload = () => {
-  setupSum()
+export function mountComponent({ elementId }) {
+  document.querySelector(elementId).innerHTML = htmlTemplate;
+
+  window.onload = () => {
+    setupSum()
+  }
 }
