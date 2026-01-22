@@ -9,5 +9,9 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <script type="module">
+      import { mountComponent } from '/src/main.js'
+      mountComponent({elementId: '#app'})
+    </script>
   </body>
 </html>

@@ -18,7 +18,7 @@ const b = ref(2)
       <span class="operator">-</span>
       <input type="number" id="b" v-model="b" />
       <span class="operator">=</span>
-      <input id="result" :value="a - b" readonly=""/>
+      <input id="result_sub" :value="a - b" readonly=""/>
     </div>
   </div>
 
