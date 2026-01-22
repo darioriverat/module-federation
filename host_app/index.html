@@ -7,8 +7,22 @@
     <title>host_app</title>
   </head>
   <body>
-    <div id="root"></div>
-    <div id="app_one"></div>
+    <div id="container">
+      <div id="root"></div>
+      <div id="app_one"></div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
+    <style>
+        #container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+        }
+        #container div {
+          margin: 0 auto;
+        }
+    </style>
   </body>
 </html>
