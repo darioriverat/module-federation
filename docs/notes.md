@@ -29,7 +29,7 @@
 
 ## Vue.js Federated App Integration
 
-<img src="./img/federation_app_two.png" alt="Vue App Integration" width="300">
+<img src="./img/federation_app_two.png" alt="Vue App Integration" style="with: 100%; max-width: 900px;">
 
 ### Framework-Specific Observations
 
@@ -41,7 +41,7 @@
 ### Development Environment Issues
 
 #### HMR Style Collision
-<img src="./img/federation_hmr.png" alt="HMR Style Collision" width="300">
+<img src="./img/federation_hmr.png" alt="HMR Style Collision" width="300" style="">
 
 - **Problem**: Vite HMR assigns identical identifiers to `style.css` files from different federated modules
 - **Example**: Both app_one and app_two receive the same identifier: `const __vite__id = "/home/node/app/src/style.css"`
