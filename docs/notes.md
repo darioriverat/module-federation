@@ -21,7 +21,8 @@
   - CSS modules with unique class names
   - Shadow DOM implementation
 
-#### 3. DOM Selector Context Issues
-- **Problem**: The vanilla header and JS image are not centered.
-- **Root Cause**: Selectors designed for `#app` in isolation fail when mounted to `#app_one`.
-- **Impact**: Layout breakage and positioning issues in federated context.
+#### 3. CSS Selector Context Issues
+- **Problem**: CSS styles targeting `#app` don't apply when the federated module is mounted to `#app_one`.
+- **Root Cause**: Federated application CSS selectors are designed for `#app` container but fail when mounted to different container IDs like `#app_one`.
+- **Impact**: Layout breakage, positioning issues, and visual inconsistencies in federated context.
+- **Example**: Header and image centering styles fail because they rely on `#app` selector which doesn't exist in the federated mounting context.
