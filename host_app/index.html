@@ -10,18 +10,20 @@
     <div id="container">
       <div id="root"></div>
       <div id="app_one"></div>
+      <div id="app_two"></div>
     </div>
     <script type="module" src="/src/main.jsx"></script>
     <style>
         #container {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
           justify-content: center;
           width: 100%;
         }
-        #container div {
+        #container > div {
           margin: 0 auto;
+          border: solid 2px #ffeb3b;
         }
     </style>
   </body>
