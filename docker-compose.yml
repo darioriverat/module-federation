@@ -4,31 +4,40 @@ services:
     build:
       context: docker/services/federated_app
     ports:
-      - "5180:5180"
+      - "5180:5180"  # Development port
+      - "5280:5280"  # Production port
     volumes:
       - type: bind
         source: ./host_app
         target: /home/node/app
+    environment:
+      - FEDERATED_MODE=${FEDERATED_MODE:-development}
 
   app_one:
     container_name: federation_app_one
     build:
       context: docker/services/federated_app
     ports:
-      - "5181:5181"
+      - "5181:5181"  # Development port
+      - "5281:5281"  # Production port
     volumes:
       - type: bind
         source: ./app_one
         target: /home/node/app
+    environment:
+      - FEDERATED_MODE=${FEDERATED_MODE:-development}
 
   app_two:
     container_name: federation_app_two
     build:
       context: docker/services/federated_app
     ports:
-      - "5182:5182"
+      - "5182:5182"  # Development port
+      - "5282:5282"  # Production port
     volumes:
       - type: bind
         source: ./app_two
         target: /home/node/app
+    environment:
+      - FEDERATED_MODE=${FEDERATED_MODE:-development}
 

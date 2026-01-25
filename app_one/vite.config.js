@@ -10,7 +10,7 @@ export default defineConfig({
       filename: 'one.js',
       // exposed modules
       exposes: {
-        './main.js': path.resolve(__dirname, 'src/main.js'),
+        './main': path.resolve(__dirname, 'src/main.js'),
       }
     })
   ],

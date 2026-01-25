@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import federation from '@originjs/vite-plugin-federation'
+import path from 'node:path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
       name: 'federated_two',
       filename: 'two.js',
       exposes: {
-        './main.js': path.resolve(__dirname, 'src/main.js')
+        './main': path.resolve(__dirname, 'src/main.js')
       }
     })
   ],
