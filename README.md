@@ -102,7 +102,23 @@
   ```
 - **Reference**: [Commit f7c51e9](https://github.com/darioriverat/module-federation/commit/f7c51e9)
 
-### 3. CORS Configuration Required
+### 3. Application Crash on Remote Unavailability
+- **Problem**: When federated modules are unavailable, the entire host application fails to load
+- **Root Cause**: Top-level `await` statements in module imports block the entire module loading chain
+- **Impact**: If any remote service is down, the complete application becomes unusable instead of gracefully degrading
+- **Solution**: Modular loading with async function wrappers and deferred execution
+  - Create separate loader modules for each remote
+  - Use coordinator pattern to load remotes independently
+  - Import remote loader after React renders to prevent blocking
+- **Key Benefits**:
+  - **Graceful Degradation**: App works even when some remotes are unavailable
+  - **Independent Loading**: Each remote loads independently without affecting others
+  - **Fast Initial Render**: React renders immediately, remotes load asynchronously
+  - **Error Isolation**: Failure of one remote doesn't crash the entire application
+- **Architecture Pattern**: Implements the "shell-first" micro-frontend pattern where the host provides core functionality and federated modules are progressive enhancements
+- **Reference**: [Commit 81d8e34](https://github.com/darioriverat/module-federation/commit/81d8e34)
+
+### 4. CORS Configuration Required
 - **Problem**: Cross-origin requests blocked when loading federated modules in production
 - **Error**: `Access to script at 'http://localhost:5281/assets/one.js' from origin 'http://localhost:5280' blocked by CORS`
 - **Root Cause**: Static file servers (like `serve`) don't include CORS headers by default
@@ -111,7 +127,7 @@
   serve -s dist -l 5281 --cors
   ```
 
-### 4. Dynamic Import Warnings
+### 5. Dynamic Import Warnings
 - **Issue**: Vite shows warnings about dynamic imports that cannot be analyzed
 - **Warning**: `This dynamic import cannot be analyzed by Vite`
 - **Solution**: Use `/* @vite-ignore */` comment to suppress warnings:
