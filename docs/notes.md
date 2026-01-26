@@ -80,6 +80,27 @@
   - `/javascript.svg` becomes unreachable when app is federated
   - CSS background images fail to load
   - Public folder assets return 404 errors
+- **Development vs Production Behavior**:
+  - **Development**: Vite automatically converts small images to base64 format, embedding them directly in the bundle - no external requests needed
+  - **Production**: Images remain as separate files requiring proper base path configuration for correct URL resolution
+- **Solution**: Configure Vite base URL using environment variables:
+  ```javascript
+  // In vite.config.js
+  export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, process.cwd())
+    const basePath = env.VITE_PUBLIC_BASE_PATH || '/'
+
+    return {
+      base: basePath,
+      // ... rest of config
+    }
+  })
+  ```
+  ```bash
+  # In .env.production
+  VITE_PUBLIC_BASE_PATH=http://localhost:5281/
+  ```
+- **Reference**: [Commit f7c51e9](https://github.com/darioriverat/module-federation/commit/f7c51e9)
 
 ### 3. CORS Configuration Required
 - **Problem**: Cross-origin requests blocked when loading federated modules in production
