@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: basePath,
+    build: {
+      assetsDir: ''
+    },
     plugins: [
       federation({
         name: 'federated_one',

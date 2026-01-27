@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: basePath,
+    build: {
+      assetsDir: ''
+    },
     plugins: [
       vue(),
       federation({

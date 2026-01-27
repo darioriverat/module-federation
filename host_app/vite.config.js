@@ -19,8 +19,8 @@ export default defineConfig(({ mode }) => {
       federation({
         name: 'federation_host',
         remotes: {
-          remote_one: `${remote_one_url}/assets/one.js`,
-          remote_two: `${remote_two_url}/assets/two.js`
+          remote_one: `${remote_one_url}/one.js`,
+          remote_two: `${remote_two_url}/two.js`
         }
       })
     ],
