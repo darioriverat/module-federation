@@ -135,3 +135,14 @@
   import(/* @vite-ignore */ `${remote_url}/src/main.js`)
   ```
 - **Note**: This is expected behavior for module federation dynamic imports
+
+### 6. CSS Loading Bug with Absolute Base URLs
+- **Problem**: Vite federation plugin fails to load CSS files when using absolute base URLs in production
+- **Root Cause**: The plugin incorrectly strips the `/assets/` path from CSS file URLs when `base` is set to an absolute URL
+- **Behavior**: 
+  - Expected: `/assets/federated_one.css`
+  - Actual: `/federated_one.css` (missing `/assets/` prefix)
+- **Plugin Bug**: Issue in `vite-plugin-federation` at [expose-production.ts:L101](https://github.com/originjs/vite-plugin-federation/blob/91014da9a39d9ea264e2ca7c5d22c620d5752073/packages/lib/src/prod/expose-production.ts#L101)
+- **Workaround**: Set `assetsDir: ''` in build configuration and update remote URLs.
+- **Impact**: CSS files load correctly with the flattened asset structure
+- **Reference**: [Commit c67d23d](https://github.com/darioriverat/module-federation/commit/c67d23d)
